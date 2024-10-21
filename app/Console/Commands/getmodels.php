@@ -6,7 +6,7 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use function Laravel\Prompts\progress;
 
-class pushmakers extends Command
+class getmodels extends Command
 {
     /**
      * The name and signature of the console command.
@@ -37,8 +37,6 @@ class pushmakers extends Command
      *
      * @return mixed
      */
-
-
     public function handle()
     {
         config(["database.connections.mysql.database" => 'autok']);

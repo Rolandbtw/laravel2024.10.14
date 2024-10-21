@@ -1,0 +1,60 @@
+.row{
+    display: block;
+    font-size: larger;
+    padding: 20px;
+
+}
+.row>td>img{
+    display: block;
+    margin: auto;
+}
+a{
+    color: white;
+    border: 2px solid white;
+    border-radius: 10px;
+    padding: 5px;
+    text-decoration: none;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.menuright>a{
+    margin: auto;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 25px;
+}
+a:hover{
+    background-color: grey;
+    border-color: black;
+}
+body{
+    background-color: black;
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+.menucontainer{
+    display: flex;
+    height: 70px;
+}
+.menuleft{
+    border-bottom: 2px solid white;
+    padding: 10px;
+    display: flex;
+    justify-content: left;
+    width: 49%;
+}
+.menuright{
+    border-bottom: 2px solid white;
+    padding: 10px;
+    display: flex;
+    justify-content: right;
+    width: 49%;
+}
+img{
+    height: 100%;
+}
+svg{
+    height: 20px;
+}
