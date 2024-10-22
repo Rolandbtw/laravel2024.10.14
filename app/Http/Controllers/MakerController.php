@@ -14,8 +14,8 @@ class MakerController extends Controller
     {
         $sort_by = request()->query("sort_by","name");
         $sort_dir = request()->query("sort_dir","asc");
-        $makers = Maker::orderBy($sort_by,$sort_dir)->paginate(5);
-        return view('makers/list',compact("makers"));
+        $makers = Maker::orderBy($sort_by,$sort_dir)->paginate(9);
+        return view('makers.index',compact("makers"));
     }
 
     /**
@@ -47,7 +47,8 @@ class MakerController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $maker = Maker::find($id);
+        return view('makers.edit',compact('maker'));
     }
 
     /**
@@ -55,7 +56,11 @@ class MakerController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $maker = Maker::find($id);
+        $maker->name = $request->name;
+        $maker->save();
+
+        return redirect()->route('makers.index')->with('success', 'Kategória sikeresen módosítva.');
     }
 
     /**
@@ -63,6 +68,9 @@ class MakerController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $maker = Maker::find($id);
+        $maker->delete();
+
+        return redirect()->route('makers.index')->with('success', 'Kategória sikeresen törölve.');
     }
 }

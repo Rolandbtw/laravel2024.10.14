@@ -8,6 +8,7 @@ use App\Http\Controllers\CarModelController;
 Route::get('/', function () {
     return view('layouts.app');
 })->name("home");
-Route::get('makers',[MakerController::class, 'index'] )->name('makers');
+Route::resource('makers',MakerController::class);
 Route::get('fuels',[FuelController::class, 'index'] )->name('fuels');
-Route::get('cars_model',[CarModelController::class, 'index'] )->name('carModels');
+
+
