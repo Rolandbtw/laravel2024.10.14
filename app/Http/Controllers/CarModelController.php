@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Car;
 use Illuminate\Http\Request;
 
 class CarModelController extends Controller
@@ -11,7 +12,7 @@ class CarModelController extends Controller
      */
     public function index()
     {
-        //
+        return view('cardb/index',['carmodels' => Car::all()]);
     }
 
     /**

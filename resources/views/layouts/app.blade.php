@@ -22,6 +22,7 @@
                 <div class="menuright">
                     <a href="{{route("makers.index")}}">Gyártók</a>
                     <a href="{{route("fuels")}}">Üzemanyagok</a>
+                    <a href="{{route("cardb.index")}}"><nobr>Új Autó</nobr></a>
                 </div>
             </div>
 

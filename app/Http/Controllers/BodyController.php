@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Fuel;
+use App\Models\Body;
 use Illuminate\Http\Request;
 
-class FuelController extends Controller
+class BodyController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('fuels/list',['fuels' => Fuel::all()]);
+        return view('cardb/index',['bodies' => Body::all()]);
     }
 
     /**

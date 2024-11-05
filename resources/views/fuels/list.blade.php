@@ -10,10 +10,10 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($entities as $entity)
+                @foreach($fuels as $fuel)
                     <tr class="row">
-                        <td id="{{$entity->id}}">{{$entity->id}}</td>
-                        <td>{{$entity->name}}</td>
+                        <td id="{{$fuel->id}}">{{$fuel->id}}</td>
+                        <td>{{$fuel->name}}</td>
                     </tr>
                 @endforeach
             </tbody>

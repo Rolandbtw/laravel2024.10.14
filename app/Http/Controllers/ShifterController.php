@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Fuel;
+use App\Models\Shifter;
 use Illuminate\Http\Request;
 
-class FuelController extends Controller
+class ShifterController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('fuels/list',['fuels' => Fuel::all()]);
+        return view('cardb/index',['shifters' => Shifter::all()]);
     }
 
     /**

@@ -11,11 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('modellek', function (Blueprint $table) {
+        Schema::create('car_dbs', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('maker_id');
-            $table->foreign('maker_id')->references('id')->on('makers')->onDelete('cascade');
-            $table->string('name');
+            $table->string("maker");
+            $table->string("modell");
+            $table->string("üzemanyag");
+            $table->string("shifter");
+            $table->string("body");
+            $table->string("color");
         });
     }
 
@@ -24,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('modellek');
+        Schema::dropIfExists('car_db');
     }
 };
