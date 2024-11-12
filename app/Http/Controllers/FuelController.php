@@ -12,7 +12,8 @@ class FuelController extends Controller
      */
     public function index()
     {
-        return view('fuels/list',['fuels' => Fuel::all()]);
+        $fuels = Fuel::all();
+        return view('fuels.index',compact("fuels"));
     }
 
     /**
@@ -44,7 +45,8 @@ class FuelController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $fuel = Fuel::find($id);
+        return view('fuels.edit',compact('fuel'));
     }
 
     /**
@@ -52,7 +54,15 @@ class FuelController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            "name"=>"required|min:3"
+        ],["required"=>"Kötelező!","min"=>"Legalább 3"]);
+
+        $fuel = Fuel::find($id);
+        $fuel->name = $request->name;
+        $fuel->save();
+
+        return redirect()->route('fuels.index')->with('success', 'Sikeresen módosítva.');
     }
 
     /**
@@ -60,6 +70,9 @@ class FuelController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $fuel = Fuel::find($id);
+        $fuel->delete();
+
+        return redirect()->route('fuels.index')->with('success', 'Sikeresen törölve.');
     }
 }

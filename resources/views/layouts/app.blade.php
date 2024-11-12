@@ -9,6 +9,9 @@
     <link href="/fontawesome/css/brands.css" rel="stylesheet" />
     <link href="/fontawesome/css/solid.css" rel="stylesheet" />
     <link rel="stylesheet" href="/style.css">
+    <script src="{{asset('js/jQuery-3.7.1.js')}}"></script>
+    <script src="{{asset('js/app.js')}}"></script>
+ 
     <title>{{config('app.name','Carlog')}}</title>
 </head>
 <body>
@@ -20,8 +23,11 @@
                     <a href="{{route("home")}}"><img src="/home.png" alt=""></a>
                 </div>
                 <div class="menuright">
-                    <a href="{{route("makers.index")}}">Gyártók</a>
-                    <a href="{{route("fuels")}}">Üzemanyagok</a>
+                    <a href="{{route("makers.index")}}">Gyártó</a>
+                    <a href="{{route("fuels.index")}}">Üzemanyag</a>
+                    <a href="{{route("bodies.index")}}">Karosszéria</a>
+                    <a href="{{route("colors.index")}}">Szín</a>
+                    <a href="{{route("shifters.index")}}">Váltó</a>
                     <a href="{{route("cardb.index")}}"><nobr>Új Autó</nobr></a>
                 </div>
             </div>

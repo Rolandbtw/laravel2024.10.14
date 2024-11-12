@@ -12,7 +12,7 @@ class BodyController extends Controller
      */
     public function index()
     {
-        return view('cardb/index',['bodies' => Body::all()]);
+        return view('bodies.index',['bodies' => Body::all()]);
     }
 
     /**
@@ -44,7 +44,8 @@ class BodyController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $body = Body::find($id);
+        return view('bodies.edit',compact('body'));
     }
 
     /**
@@ -52,7 +53,15 @@ class BodyController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            "name"=>"required|min:3"
+        ],["required"=>"Kötelező!","min"=>"Legalább 3"]);
+
+        $body = Body::find($id);
+        $body->name = $request->name;
+        $body->save();
+
+        return redirect()->route('bodies.index')->with('success', 'Sikeresen módosítva.');
     }
 
     /**
@@ -60,6 +69,9 @@ class BodyController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $body = Body::find($id);
+        $body->delete();
+
+        return redirect()->route('bodies.index')->with('success', 'Sikeresen törölve.');
     }
 }

@@ -19,7 +19,7 @@ class Car_dbController extends Controller
     
      public function index()
     {
-        return view('cardb.index',['bodies' => Body::all(),'colors' => Color::all(),'fuels' => Fuel::all(),'shifters' => Shifter::all(),'makers'=>Maker::all(), 'carmodels'=>Car::all()]);
+        return view('cardb.index',['bodies' => Body::all(),'colors' => Color::all(),'fuels' => Fuel::all(),'shifters' => Shifter::all(),'makers'=>Maker::all(), 'models'=>Car::all(), 'cars'=> Car_db::all()]);
     }
 
     /**
@@ -28,15 +28,15 @@ class Car_dbController extends Controller
     public function create(Request $request)
     {
         $car = new Car_db;
-        $car->maker = $request->makers;
-        $car->modell = $request->carmodels;
-        $car->üzemanyag = $request->fuels;
-        $car->shifter = $request->shifters;
-        $car->body = $request->bodies;
-        $car->color = $request->colors;
+        $car->maker_id = $request->makers;
+        $car->modell_id = $request->carmodels;
+        $car->üzemanyag_id = $request->fuels;
+        $car->shifter_id = $request->shifters;
+        $car->body_id = $request->bodies;
+        $car->color_id = $request->colors;
         $car->save();
 
-        return view('cardb.index',['bodies' => Body::all(),'colors' => Color::all(),'fuels' => Fuel::all(),'shifters' => Shifter::all(),'makers'=>Maker::all(), 'carmodels'=>Car::all()]);
+        return view('cardb.index',['bodies' => Body::all(),'colors' => Color::all(),'fuels' => Fuel::all(),'shifters' => Shifter::all(),'makers'=>Maker::all(), 'models'=>Car::all()]);
     }
 
 

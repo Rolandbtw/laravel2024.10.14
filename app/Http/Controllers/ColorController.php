@@ -12,7 +12,8 @@ class ColorController extends Controller
      */
     public function index()
     {
-        return view('cardb/index',['colors' => Color::all()]);
+        $colors = Color::all();
+        return view('colors.index',compact("colors"));
     }
 
     /**
@@ -44,7 +45,8 @@ class ColorController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $color = Color::find($id);
+        return view('colors.edit',compact('color'));
     }
 
     /**
@@ -52,7 +54,15 @@ class ColorController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            "name"=>"required|min:3"
+        ],["required"=>"Kötelező!","min"=>"Legalább 3"]);
+
+        $color = Color::find($id);
+        $color->name = $request->name;
+        $color->save();
+
+        return redirect()->route('colors.index')->with('success', 'Sikeresen módosítva.');
     }
 
     /**
@@ -60,6 +70,9 @@ class ColorController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $color = Color::find($id);
+        $color->delete();
+
+        return redirect()->route('colors.index')->with('success', 'Sikeresen törölve.');
     }
 }

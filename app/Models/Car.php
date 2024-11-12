@@ -10,4 +10,8 @@ class Car extends Model
     use HasFactory;
 
     public $timestamps = false;
+
+    function maker(){
+        return $this->belongsTo(Maker::class);
+    }
 }

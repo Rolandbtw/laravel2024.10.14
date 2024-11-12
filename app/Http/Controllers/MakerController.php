@@ -73,4 +73,13 @@ class MakerController extends Controller
 
         return redirect()->route('makers.index')->with('success', 'Kategória sikeresen törölve.');
     }
+
+    public function models(string $id)
+    {
+        $makers = Maker::find($id);
+        $models=$makers->models;
+
+        $result['data']=$models;
+        return response()->json($result);
+    }
 }

@@ -12,44 +12,56 @@
             
             
             <label for="makers">Gyártó</label>
-            <select name="makers">
+            <select name="makers" id="makers">
                 @foreach($makers as $maker)
-                <option value="{{$maker->name}}">{{$maker->name}}</option>
+                <option value="{{$maker->id}}">{{$maker->name}}</option>
                 @endforeach
             </select>
-            <label for="carmodels">Modell</label>
-            <select name="carmodels">
-                @foreach($carmodels as $model)
-                <option value="{{$model->name}}">{{$model->name}}</option>
+            <label for="models">Modell</label>
+            <select name="models" id="models">
+                @foreach($models as $model)
+                <option value="{{$model->id}}">{{$model->name}}</option>
                 @endforeach
             </select>
 
             <label for="fuels">Üzemanyag</label>
             <select name="fuels">
                 @foreach($fuels as $fuel)
-                <option value="{{$fuel->name}}">{{$fuel->name}}</option>
+                <option value="{{$fuel->id}}">{{$fuel->name}}</option>
                 @endforeach
             </select>
             <label for="shifters">Váltó típus</label>
             <select name="shifters">
                 @foreach($shifters as $shifter)
-                <option value="{{$shifter->name}}">{{$shifter->name}}</option>
+                <option value="{{$shifter->id}}">{{$shifter->name}}</option>
                 @endforeach
             </select>
             <label for="bodies">Karosszéria típus</label>
             <select name="bodies">
                 @foreach($bodies as $body)
-                <option value="{{$body->name}}">{{$body->name}}</option>
+                <option value="{{$body->id}}">{{$body->name}}</option>
                 @endforeach
             </select>
             <label for="colors">Szín</label>
             <select name="colors">
                 @foreach($colors as $color)
-                <option value="{{$color->name}}">{{$color->name}}</option>
+                <option value="{{$color->id}}">{{$color->name}}</option>
                 @endforeach
             </select>
             <button type="submit">Ment</button>
         </form>
-                
+
+<!--         <div>
+            <h1>Meglévő autók</h1>
+            @foreach($cars as $car)
+                <tr class="row">
+                    <td id="{{$car->id}}">{{$car->id}}</td>
+                    <td>{{$car->name}}</td>
+                    
+                </tr>
+            @endforeach
+
+
+        </div> -->
     </div>
 @endsection

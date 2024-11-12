@@ -12,7 +12,7 @@ class ShifterController extends Controller
      */
     public function index()
     {
-        return view('cardb/index',['shifters' => Shifter::all()]);
+        return view('shifters.index',['shifters' => Shifter::all()]);
     }
 
     /**
@@ -26,6 +26,7 @@ class ShifterController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+    
     public function store(Request $request)
     {
         //
@@ -44,7 +45,8 @@ class ShifterController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $shifter = Shifter::find($id);
+        return view('shifters.edit',compact('shifter'));
     }
 
     /**
@@ -52,7 +54,14 @@ class ShifterController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            "name"=>"required|min:3"
+        ], ["required"=>"Kötelező!","min"=>"Legalább 3"]);
+        $shifter = Shifter::find($id);
+        $shifter->name = $request->name;
+        $shifter->save();
+
+        return redirect()->route('shifters.index')->with('success', 'Sikeresen módosítva.');
     }
 
     /**
@@ -60,6 +69,9 @@ class ShifterController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $shifter =Shifter::find($id);
+        $shifter->delete();
+
+        return redirect()->route('shifters.index')->with('success', 'Sikeresen törölve.');
     }
 }
